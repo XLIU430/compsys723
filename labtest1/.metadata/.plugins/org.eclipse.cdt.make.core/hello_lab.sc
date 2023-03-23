@@ -2,11 +2,11 @@
 <?scdStore version="2"?>
 
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
-<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1038521654;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1038521654.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.586127737;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.939066412">
+<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.339682680;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.339682680.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.1578418669;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1657349537">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="C:/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab_bsp/HAL/inc"/>
-<includePath path="C:/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab_bsp/"/>
-<includePath path="C:/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab_bsp/drivers/inc"/>
+<includePath path="H:/Documents/GitHub/compsys723/labtest1/software/hello_lab_bsp/HAL/inc"/>
+<includePath path="H:/Documents/GitHub/compsys723/labtest1/software/hello_lab_bsp/"/>
+<includePath path="H:/Documents/GitHub/compsys723/labtest1/software/hello_lab_bsp/drivers/inc"/>
 <includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++"/>
 <includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\i686-pc-cygwin"/>
 <includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include\c++\backward"/>
@@ -230,11 +230,11 @@
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
 </collector>
 </instance>
-<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1038521654;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1038521654.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1477801798;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1107378876">
+<instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.339682680;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.339682680.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1996349654;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.573438276">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="C:/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab_bsp/HAL/inc"/>
-<includePath path="C:/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab_bsp/"/>
-<includePath path="C:/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab_bsp/drivers/inc"/>
+<includePath path="H:/Documents/GitHub/compsys723/labtest1/software/hello_lab_bsp/HAL/inc"/>
+<includePath path="H:/Documents/GitHub/compsys723/labtest1/software/hello_lab_bsp/"/>
+<includePath path="H:/Documents/GitHub/compsys723/labtest1/software/hello_lab_bsp/drivers/inc"/>
 <includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include"/>
 <includePath path="C:\altera\13.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\4.5.3\include-fixed"/>
 <includePath path="C:\altera\13.0\quartus\bin\cygwin\usr\include"/>

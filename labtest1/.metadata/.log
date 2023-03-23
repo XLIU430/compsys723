@@ -1,4 +1,4 @@
-!SESSION 2023-03-16 15:20:33.380 -----------------------------------------------
+!SESSION 2023-03-23 12:47:39.528 -----------------------------------------------
 eclipse.buildId=M20120208-0800
 java.version=1.6.0_23
 java.vendor=Sun Microsystems Inc.
@@ -6,12 +6,12 @@ BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_NZ
 Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
 Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
 
-!ENTRY org.eclipse.cdt.core 1 0 2023-03-16 15:22:25.512
-!MESSAGE Indexed 'hello_lab_bsp' (97 sources, 77 headers) in 0.64 sec: 1,878 declarations; 6,452 references; 146 unresolved inclusions; 5 syntax errors; 295 unresolved names (3.42%)
+!ENTRY org.eclipse.cdt.core 1 0 2023-03-23 12:48:45.197
+!MESSAGE Indexed 'hello_lab_bsp' (97 sources, 95 headers) in 1.63 sec: 2,147 declarations; 6,797 references; 144 unresolved inclusions; 57 syntax errors; 302 unresolved names (3.27%)
 
-!ENTRY org.eclipse.cdt.core 1 0 2023-03-16 15:22:27.441
-!MESSAGE Indexed 'hello_lab' (1 sources, 13 headers) in 0.01 sec: 1 declarations; 1 references; 14 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
-!SESSION 2023-03-16 15:27:13.008 -----------------------------------------------
+!ENTRY org.eclipse.cdt.core 1 0 2023-03-23 12:48:47.024
+!MESSAGE Indexed 'hello_lab' (1 sources, 13 headers) in 0.03 sec: 1 declarations; 1 references; 14 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2023-03-23 12:59:24.364 -----------------------------------------------
 eclipse.buildId=M20120208-0800
 java.version=1.6.0_23
 java.vendor=Sun Microsystems Inc.
@@ -19,8 +19,53 @@ BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_NZ
 Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
 Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
 
-!ENTRY com.altera.sbtgui.launch 1 0 2023-03-16 15:36:00.987
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:00:48.147
 !MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
 
-!ENTRY com.altera.sbtgui.launch 1 0 2023-03-16 15:36:03.415
-!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/xliu430/Documents/compsys723/labtest1/software/hello_lab/hello_lab.elf]
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:00:50.568
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/hello_lab/hello_lab.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:09:24.330
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:09:26.753
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/hello_lab/hello_lab.elf]
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-03-23 13:29:07.841
+!MESSAGE Indexed 'freertos_test_bsp' (97 sources, 77 headers) in 0.98 sec: 1,878 declarations; 6,452 references; 146 unresolved inclusions; 5 syntax errors; 295 unresolved names (3.42%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-03-23 13:29:09.838
+!MESSAGE Indexed 'freertos_test' (0 sources, 13 headers) in 0.00 sec: 0 declarations; 0 references; 13 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:44:11.249
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:44:12.036
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:44:14.497
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:54:07.786
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 13:54:10.326
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 14:14:22.604
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 14:14:25.145
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 14:34:31.696
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 14:34:34.241
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 14:36:20.693
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-03-23 14:36:23.250
+!MESSAGE Executing: [C:/altera/13.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/h/Documents/GitHub/compsys723/labtest1/software/freertos_test/freertos_test.elf]
