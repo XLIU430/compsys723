@@ -1544,6 +1544,7 @@ BaseType_t xTaskNotify( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAct
  * \defgroup xTaskNotify xTaskNotify
  * \ingroup TaskNotifications
  */
+
 BaseType_t xTaskNotifyFromISR( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction, BaseType_t *pxHigherPriorityTaskWoken );
 
 /**

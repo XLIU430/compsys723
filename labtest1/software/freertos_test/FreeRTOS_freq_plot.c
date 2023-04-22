@@ -11,7 +11,7 @@
 
 
 
-
+#include <stdbool.h>
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
 #include "FreeRTOS/queue.h"
@@ -31,19 +31,34 @@
 
 #define PRVGADraw_Task_P      (tskIDLE_PRIORITY+1)
 #define PRINT_STATUS_TASK_PRIORITY (tskIDLE_PRIORITY+2)
+#define STABLE_MONITOR_TASK_P (tskIDLE_PRIORITY+3)
+#include <inttypes.h>
 
 
 TaskHandle_t PRVGADraw;
-TaskHandle_t keyboardTaskHandle = NULL;
-
+TaskHandle_t keyboardTaskHandle;
+TaskHandle_t stableTaskHandle;
+BaseType_t checkIfFieldRequired;
 static QueueHandle_t Q_freq_data;
+
+
 
 
 double temp = 50.00;
 double freqThresh = 50.00;
-double ROCThresh = 2;
+double ROCThresh = 2.00;
 char freqStr[10] ="50.00";
+char testStr[30];
+char oddStr[10];
 char ROCStr[10]= "2";
+
+double freq[100], dfreq[100];
+uint8_t keyboardMode = 0;
+unsigned char byte;
+unsigned char previousbyte;
+
+//this array map the ps2 scan code of the keypad numbers,{0,1,2,3,4.....}
+const int numbers[] ={112,105,114,122,107,115,116,108,117,125,113};
 
 
 typedef struct{
@@ -52,6 +67,8 @@ typedef struct{
 	unsigned int x2;
 	unsigned int y2;
 }Line;
+
+
 
 
 /****** VGA display ******/
@@ -96,12 +113,12 @@ void PRVGADraw_Task(void *pvParameters ){
 	alt_up_char_buffer_string(char_buf, "-60", 9, 36);
 
 	alt_up_char_buffer_string(char_buf, "Frequency threshold:", 4, 46);
-	alt_up_char_buffer_string(char_buf, freqStr, 30, 46);
+
 
 	alt_up_char_buffer_string(char_buf, "RoC threshold:", 4, 50);
-	alt_up_char_buffer_string(char_buf, ROCStr, 30, 50);
 
-	double freq[100], dfreq[100];
+
+
 	int i = 99, j = 0;
 	Line line_freq, line_roc;
 
@@ -111,6 +128,10 @@ void PRVGADraw_Task(void *pvParameters ){
 		while(uxQueueMessagesWaiting( Q_freq_data ) != 0){
 			xQueueReceive( Q_freq_data, freq+i, 0 );
 
+			sprintf(freqStr, "%f", freqThresh);
+			sprintf(ROCStr, "%f", ROCThresh);
+			alt_up_char_buffer_string(char_buf, ROCStr, 30, 50);
+			alt_up_char_buffer_string(char_buf, freqStr, 30, 46);
 			//calculate frequency RoC
 
 			if(i==0){
@@ -183,35 +204,126 @@ void print_status_task(void *pvParameters)
 }
 
 void keyboard_control_task(void *pvParameters)
-{
+{	int notiValue;
+	int i;
+	int j = 0;
 	while (1)
-	{
+	{	notiValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		//printf("Scan code: %x\n", byte);
+
+
+
+	if((byte == 45)&&(keyboardMode ==0)){
+		memset(testStr, 0, 30);
+		j =0;
+		printf("you are about to change ROC threshold\n");
+		keyboardMode =2;
+	}
+	if(keyboardMode ==2){
+		if(byte == 90){
+		for(i = 0; i <20; i++){
+			if(i%2 == 0){
+				oddStr[j++] = testStr[i];
+			}
+		}
+		ROCThresh = strtod(oddStr, &oddStr);
+		printf("double ROC Threshold: %lf\n", ROCThresh);
+		keyboardMode =0;
+		}
+		else{
+					for(i = 0; i < 11; i ++){
+						char keyPadNum[4];
+						if(byte == numbers[i]){
+							if(i != 10){
+							sprintf(keyPadNum, "%d", i);
+							//printf("new freq Threshold: %s\n", keyPadNum);
+							strncat(testStr, &keyPadNum[0], 1);
+							//printf("new ROC Threshold: %s\n", testStr);
+
+						}else{
+							strncat(testStr, &".", 1);
+							//printf("new ROC Threshold: %s\n", testStr);
+						}
+						}
+					}
+				}
 
 	}
+
+
+
+
+
+		if((byte == 43)&&(keyboardMode ==0)){
+			memset(testStr, 0, 30);
+			j =0;
+			printf("you are about to change frequency threshold\n");
+			keyboardMode =1;
+		}
+		if(keyboardMode ==1){
+			if(byte == 90){
+			for(i = 0; i <20; i++){
+				if(i%2 == 0){
+					oddStr[j++] = testStr[i];
+				}
+			}
+			freqThresh = strtod(oddStr, &oddStr);
+			printf("double freq Threshold: %lf\n", freqThresh);
+			keyboardMode =0;
+			}else{
+			for(i = 0; i < 11; i ++){
+				char keyPadNum[4];
+				if(byte == numbers[i]){
+					if(i != 10){
+					sprintf(keyPadNum, "%d", i);
+					//printf("new freq Threshold: %s\n", keyPadNum);
+					strncat(testStr, &keyPadNum[0], 1);
+					//printf("new freq Threshold: %s\n", testStr);
+
+				}else{
+					strncat(testStr, &".", 1);
+					//printf("new freq Threshold: %s\n", testStr);
+				}
+				}
+			}
+		}
+		}
+
+		previousbyte = byte;
+	}
+}
+
+void stabilityMonitorTask(void *p){
+	int notiValue;
+	while (1)
+		{	notiValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+			printf("Scan code: %lf\n", temp);
+		}
 }
 
 
 void freq_relay(){
 	#define SAMPLING_FREQ 16000.0
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	temp = SAMPLING_FREQ/(double)IORD(FREQUENCY_ANALYSER_BASE, 0);
-	sprintf(freqStr, "%f", freqThresh);
-	sprintf(ROCStr, "%f", ROCThresh);
-	//printf("%f Hz\n", temp);
-	xQueueSendToBackFromISR( Q_freq_data, &temp, pdFALSE );
 
+
+	xQueueSendToBackFromISR( Q_freq_data, &temp, pdFALSE );
+	//xTaskNotifyFromISR(stableTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
 	return;
 }
 
 void ps2_isr(void* ps2_device, alt_u32 id){
-	unsigned char byte;
-	alt_up_ps2_read_data_byte_timeout(ps2_device, &byte);
 
-	printf("Scan code: %x\n", byte);
+	alt_up_ps2_read_data_byte_timeout(ps2_device, &byte);
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	  // Send a notification to index 0 with value 1
+	xTaskNotifyFromISR(keyboardTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
 }
 
 int main()
 {
-	Q_freq_data = xQueueCreate( 100, sizeof(double) );
+	Q_freq_data = xQueueCreate(100,sizeof(double));
 	alt_up_ps2_dev * ps2_device = alt_up_ps2_open_dev(PS2_NAME);
 
 	alt_irq_register(FREQUENCY_ANALYSER_IRQ, 0, freq_relay);
@@ -222,7 +334,7 @@ int main()
 	xTaskCreate( PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw );
 	//xTaskCreate(print_status_task, "print_status_task", configMINIMAL_STACK_SIZE, NULL, PRINT_STATUS_TASK_PRIORITY, NULL);
 	xTaskCreate(keyboard_control_task, "keyboardTsk", configMINIMAL_STACK_SIZE, NULL, PRINT_STATUS_TASK_PRIORITY, &keyboardTaskHandle);
-
+	//xTaskCreate(stabilityMonitorTask, "stableMonitorTsk", configMINIMAL_STACK_SIZE, NULL, STABLE_MONITOR_TASK_P, stableTaskHandle);
 
 	vTaskStartScheduler();
 
