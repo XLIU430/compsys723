@@ -2,67 +2,70 @@
 **** Build of configuration Nios II for project freertos_test ****
 
 make all 
-      0 [main] sh 7904 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 9052 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 23312 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] echo 4488 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] echo 26612 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Building ../freertos_test_bsp/
 the public mailing list cygwin@cygwin.com
 make --no-print-directory -C ../freertos_test_bsp/
-      0 [main] pwd 20424 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] pwd 7348 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 3496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 20648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 makefile:608: Warning: SOPC File H:/Documents/GitHub/compsys723/labtest1/nios2.sopcinfo could not be found.
-      0 [main] sh 24232 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 7036 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 [BSP build complete]
-      0 [main] echo 24476 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] echo 24328 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Compiling FreeRTOS_freq_plot.c to obj/default/FreeRTOS_freq_plot.o
 the public mailing list cygwin@cygwin.com
-      0 [main] mkdir 2552 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] mkdir 5832 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 nios2-elf-gcc -xc -MP -MMD -c -I../freertos_test_bsp//HAL/inc -I../freertos_test_bsp/ -I../freertos_test_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o obj/default/FreeRTOS_freq_plot.o FreeRTOS_freq_plot.c
 FreeRTOS_freq_plot.c: In function 'PRVGADraw_Task':
-FreeRTOS_freq_plot.c:149: warning: operation on 'i' may be undefined
+FreeRTOS_freq_plot.c:167: warning: operation on 'i' may be undefined
 FreeRTOS_freq_plot.c: In function 'keyboard_control_task':
-FreeRTOS_freq_plot.c:217: warning: implicit declaration of function 'memset'
-FreeRTOS_freq_plot.c:217: warning: incompatible implicit declaration of built-in function 'memset'
-FreeRTOS_freq_plot.c:229: warning: passing argument 2 of 'strtod' from incompatible pointer type
-FreeRTOS_freq_plot.c:240: warning: implicit declaration of function 'strncat'
-FreeRTOS_freq_plot.c:240: warning: incompatible implicit declaration of built-in function 'strncat'
-FreeRTOS_freq_plot.c:244: warning: incompatible implicit declaration of built-in function 'strncat'
-FreeRTOS_freq_plot.c:244: warning: passing argument 2 of 'strncat' from incompatible pointer type
-FreeRTOS_freq_plot.c:258: warning: incompatible implicit declaration of built-in function 'memset'
-FreeRTOS_freq_plot.c:270: warning: passing argument 2 of 'strtod' from incompatible pointer type
-FreeRTOS_freq_plot.c:280: warning: incompatible implicit declaration of built-in function 'strncat'
-FreeRTOS_freq_plot.c:284: warning: incompatible implicit declaration of built-in function 'strncat'
-FreeRTOS_freq_plot.c:284: warning: passing argument 2 of 'strncat' from incompatible pointer type
-FreeRTOS_freq_plot.c: In function 'freq_relay':
-FreeRTOS_freq_plot.c:307: warning: unused variable 'xHigherPriorityTaskWoken'
-      0 [main] true 24456 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+FreeRTOS_freq_plot.c:235: warning: implicit declaration of function 'memset'
+FreeRTOS_freq_plot.c:235: warning: incompatible implicit declaration of built-in function 'memset'
+FreeRTOS_freq_plot.c:247: warning: passing argument 2 of 'strtod' from incompatible pointer type
+FreeRTOS_freq_plot.c:258: warning: implicit declaration of function 'strncat'
+FreeRTOS_freq_plot.c:258: warning: incompatible implicit declaration of built-in function 'strncat'
+FreeRTOS_freq_plot.c:262: warning: incompatible implicit declaration of built-in function 'strncat'
+FreeRTOS_freq_plot.c:262: warning: passing argument 2 of 'strncat' from incompatible pointer type
+FreeRTOS_freq_plot.c:276: warning: incompatible implicit declaration of built-in function 'memset'
+FreeRTOS_freq_plot.c:288: warning: passing argument 2 of 'strtod' from incompatible pointer type
+FreeRTOS_freq_plot.c:298: warning: incompatible implicit declaration of built-in function 'strncat'
+FreeRTOS_freq_plot.c:302: warning: incompatible implicit declaration of built-in function 'strncat'
+FreeRTOS_freq_plot.c:302: warning: passing argument 2 of 'strncat' from incompatible pointer type
+FreeRTOS_freq_plot.c: In function 'stabilityMonitorTask':
+FreeRTOS_freq_plot.c:320: warning: implicit declaration of function 'fabs'
+FreeRTOS_freq_plot.c:320: warning: incompatible implicit declaration of built-in function 'fabs'
+FreeRTOS_freq_plot.c: In function 'shedLoads':
+FreeRTOS_freq_plot.c:373: warning: function returns address of local variable
+      0 [main] true 23732 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] echo 24712 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] echo 19864 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Linking freertos_test.elf
 the public mailing list cygwin@cygwin.com
 nios2-elf-g++  -T'../freertos_test_bsp//linker.x' -msys-crt0='../freertos_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../freertos_test_bsp/   -Wl,-Map=freertos_test.map   -O0 -g -Wall   -EL -mhw-div -mhw-mul -mno-hw-mulx  -o freertos_test.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/FreeRTOS_freq_plot.o obj/default/FreeRTOS/port_asm.o -lm 
 nios2-elf-insert freertos_test.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/Users/OEM/Desktop/A1workspace/compsys723/labtest1"
-      0 [main] sh 23804 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 24064 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] uname 18660 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] uname 12332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 25048 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 24660 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-Info: (freertos_test.elf) 622 KBytes program size (code + initialized data).
+Info: (freertos_test.elf) 624 KBytes program size (code + initialized data).
 Info:                     130558 KBytes free for stack + heap.
-      0 [main] echo 10556 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
-the public mailing list cygwin@cygwin.com
+      0 [main] echo 16492 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Creating freertos_test.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
-      0 [main] sh 26332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 24836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+nios2-elf-objdump --disassemble --syms --all-header --source freertos_test.elf >freertos_test.objdump
+      0 [main] sh 4064 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      0 [main] sh 23124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 [freertos_test build complete]
 
@@ -71,25 +74,25 @@ the public mailing list cygwin@cygwin.com
 **** Build of configuration Nios II for project freertos_test ****
 
 make all 
-      0 [main] sh 21784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 25480 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 5804 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 18796 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] echo 24292 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] echo 6752 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 Info: Building ../freertos_test_bsp/
 the public mailing list cygwin@cygwin.com
 make --no-print-directory -C ../freertos_test_bsp/
-      0 [main] pwd 21400 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] pwd 26280 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 22200 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 17412 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 makefile:608: Warning: SOPC File H:/Documents/GitHub/compsys723/labtest1/nios2.sopcinfo could not be found.
-      0 [main] sh 6512 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] sh 11320 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 [BSP build complete]
-      0 [main] true 23664 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      0 [main] true 25388 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
-      0 [main] sh 11348 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+      1 [main] sh 20032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 the public mailing list cygwin@cygwin.com
 [freertos_test build complete]
 

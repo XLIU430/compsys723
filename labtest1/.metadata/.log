@@ -2199,3 +2199,439 @@ java.lang.IllegalStateException
 
 !ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:00:06.715
 !MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:02:39.273
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:02:39.681
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:02:42.073
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:12:25.093
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:12:27.568
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:42:09.077
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:42:11.557
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:44:40.953
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:44:41.414
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:44:43.895
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:46:23.935
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:46:24.392
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:46:26.858
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:52:40.907
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:52:41.360
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:52:43.826
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:52:58.239
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:52:58.659
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:53:01.141
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:54:43.901
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:54:44.347
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 01:54:46.830
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:04:15.931
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:04:16.352
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:04:18.761
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:05:57.776
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:05:58.178
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:06:00.572
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:12:00.781
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:12:01.187
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:12:03.606
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:41:47.043
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:41:50.985
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --tcpport=auto --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY org.eclipse.debug.core 4 2 2023-04-23 02:42:20.730
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.mi.core.cdi.Session.terminate(Session.java:184)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleTerminateEvent(SessionManager.java:73)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleDebugEvents(SessionManager.java:58)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1119)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1153)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:415)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 125 2023-04-23 02:42:20.730
+!MESSAGE An exception occurred while dispatching debug events.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.mi.core.cdi.Session.terminate(Session.java:184)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleTerminateEvent(SessionManager.java:73)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleDebugEvents(SessionManager.java:58)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1119)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1153)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:415)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.ui 4 120 2023-04-23 02:42:20.730
+!MESSAGE Error logged from Debug UI: 
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:230)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:196)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:204)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsole$StreamListener.streamAppended(ProcessConsole.java:588)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor$ContentNotifier.run(OutputStreamMonitor.java:257)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor$ContentNotifier.notifyAppend(OutputStreamMonitor.java:267)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.fireStreamAppended(OutputStreamMonitor.java:116)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.read(OutputStreamMonitor.java:156)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.access$1(OutputStreamMonitor.java:134)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor$1.run(OutputStreamMonitor.java:207)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2023-04-23 02:43:01.197 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.ui 4 4 2023-04-23 02:43:05.644
+!MESSAGE Could not create view: 'org.eclipse.ui.internal.introview'.
+
+!ENTRY org.eclipse.ui 4 0 2023-04-23 02:43:06.322
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2023-04-23 02:43:06.322
+!MESSAGE Unable to restore perspective: Workspace - Nios II Debug.
+!SUBENTRY 2 org.eclipse.ui 0 0 2023-04-23 02:43:06.322
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2023-04-23 02:43:06.322
+!MESSAGE 
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.ui 4 0 2023-04-23 02:43:06.322
+!MESSAGE Could not find view: org.eclipse.ui.internal.introview
+!SUBENTRY 1 unknown 0 0 2023-04-23 02:43:06.322
+!MESSAGE OK
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:43:29.462
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:43:31.863
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:45:31.878
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:45:32.300
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:45:34.682
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:47:16.037
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:47:16.442
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:47:18.833
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:47:51.462
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:47:51.868
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:47:54.258
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:50:16.072
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:50:16.473
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:50:18.851
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:52:16.522
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:52:16.931
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:52:19.320
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:53:32.091
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:53:32.496
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:53:34.889
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:55:06.068
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:55:06.472
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:55:08.867
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:56:26.428
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:56:26.830
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:56:29.222
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:57:39.267
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:57:39.673
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:57:42.089
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:59:16.331
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:59:16.754
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 02:59:19.180
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:00:58.438
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:00:58.873
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:01:01.284
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:02:34.305
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:02:34.730
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:02:37.142
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:07:06.115
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:07:06.545
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:07:08.963
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:08:30.555
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:08:30.975
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:08:33.382
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:10:06.318
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:10:06.737
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:10:09.152
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:11:00.995
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:11:01.417
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:11:03.825
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:12:30.698
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:12:31.114
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:12:33.528
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:36:11.971
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:36:14.447
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:37:52.316
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:37:54.801
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:40:21.068
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:40:21.474
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:40:23.853
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:44:25.643
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:44:26.051
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:44:28.446
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:45:56.321
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:45:56.726
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:45:59.116
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:47:08.974
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:47:09.389
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:47:11.769
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:55:02.260
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:55:02.674
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 03:55:05.052
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:03:10.630
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:03:11.050
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:03:13.428
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:04:07.292
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:04:07.697
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:04:10.087
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:05:02.083
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:05:02.513
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x430f0 --id=0x7 --timestamp=1393900972]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-23 04:05:04.988
+!MESSAGE Executing: [C:/altera/13.0sp1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x430f0 --id=0x7 --timestamp=1393900972 /cygdrive/c/Users/OEM/Desktop/A1workspace/compsys723/labtest1/software/freertos_test/freertos_test.elf]

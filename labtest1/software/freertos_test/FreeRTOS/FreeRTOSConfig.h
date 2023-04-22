@@ -97,7 +97,7 @@
 #define configTICK_RATE_HZ				( ( portTickType ) 1000 )
 #define configCPU_CLOCK_HZ				( ( unsigned long ) ALT_SYS_CLK ) 
 #define configMAX_PRIORITIES			( ( unsigned portBASE_TYPE ) 12 )
-#define configMINIMAL_STACK_SIZE		( 8192 )
+#define configMINIMAL_STACK_SIZE		( 16384 )
 #define configISR_STACK_SIZE			configMINIMAL_STACK_SIZE
 #define configTOTAL_HEAP_SIZE			( ( size_t ) 512000 )
 #define configMAX_TASK_NAME_LEN			( 8 )

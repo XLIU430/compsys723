@@ -10,7 +10,7 @@
 #include "altera_up_ps2_keyboard.h"
 
 
-
+#include "altera_avalon_pio_regs.h"
 #include <stdbool.h>
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
@@ -30,14 +30,22 @@
 #define MIN_FREQ 45.0 //minimum frequency to draw
 
 #define PRVGADraw_Task_P      (tskIDLE_PRIORITY+1)
-#define PRINT_STATUS_TASK_PRIORITY (tskIDLE_PRIORITY+2)
-#define STABLE_MONITOR_TASK_P (tskIDLE_PRIORITY+3)
+//#define PRINT_STATUS_TASK_PRIORITY (tskIDLE_PRIORITY+2)
+#define KEYBOARD_TASK_PRIORITY (tskIDLE_PRIORITY+2)
+#define STABLE_MONITOR_TASK_P (tskIDLE_PRIORITY+5)
+#define LOAD_CONTROL_TASK_P (tskIDLE_PRIORITY+6)
+#define SWITCH_POLLING_TASK_P (tskIDLE_PRIORITY+3)
+
 #include <inttypes.h>
 
+int* shedLoads(int numOfShed,int sw_result_bin[]);
+int binaryToDecimal(int sw_result_bin[]);
 
 TaskHandle_t PRVGADraw;
 TaskHandle_t keyboardTaskHandle;
 TaskHandle_t stableTaskHandle;
+TaskHandle_t loadCtlTaskHandle;
+TaskHandle_t switchPollingTaskHandle;
 BaseType_t checkIfFieldRequired;
 static QueueHandle_t Q_freq_data;
 
@@ -45,17 +53,27 @@ static QueueHandle_t Q_freq_data;
 
 
 double temp = 50.00;
-double freqThresh = 50.00;
-double ROCThresh = 2.00;
+double currentROC;
+double freqThresh = 49.00;
+double ROCThresh = 10.00;
 char freqStr[10] ="50.00";
 char testStr[30];
 char oddStr[10];
 char ROCStr[10]= "2";
 
+int sw_result;
+int sw_result_bin[18];
+int current_sw_size;
+double previousFreq = 50.00;
 double freq[100], dfreq[100];
 uint8_t keyboardMode = 0;
 unsigned char byte;
 unsigned char previousbyte;
+
+int numOfShed = 0;
+bool loadManage =false;
+
+
 
 //this array map the ps2 scan code of the keypad numbers,{0,1,2,3,4.....}
 const int numbers[] ={112,105,114,122,107,115,116,108,117,125,113};
@@ -297,8 +315,102 @@ void stabilityMonitorTask(void *p){
 	int notiValue;
 	while (1)
 		{	notiValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-			printf("Scan code: %lf\n", temp);
+
+			currentROC = (temp-previousFreq) * 2.0 *temp* previousFreq / (temp+previousFreq);
+			currentROC = fabs(currentROC);
+			printf("real time frequency: %lf\n", temp);
+			printf("real time ROC: %lf\n", currentROC);
+			previousFreq = temp;
+
+			if((loadManage ==false )&&((temp <= freqThresh )||(currentROC >= ROCThresh))){
+				loadManage = true;
+				numOfShed = numOfShed+1;
+			}
+			if((loadManage ==true )&&((temp >= freqThresh )&&(currentROC <= ROCThresh))){
+				loadManage = false;
+				numOfShed = 0;
+			}
+
 		}
+}
+
+
+void loadCtlTask(void *p){
+
+	int load_output;
+	while(1){
+		if(loadManage ==true){
+			int* output = shedLoads(numOfShed,sw_result_bin);
+			load_output = binaryToDecimal(output);
+		}else{
+
+		load_output = binaryToDecimal(sw_result_bin);
+		//printf(" %d ",  load_output);
+		}
+	    IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, load_output);    //light red LEDs according to switch positions
+	    vTaskDelay(50);
+	}
+
+}
+
+int* shedLoads(int numOfShed,int sw_result_bin[]){
+
+	int len = current_sw_size;
+	int output[len];
+	int m = 0;
+	int count = 0;
+
+	for (m = 0; m < len; m++) {
+		 output[m] = sw_result_bin[m];
+	}
+
+	for (m = 0; m< len ; m++) {
+	        if((output[m] == 1)&&(count < numOfShed)){
+	        	output[m] = 0;
+	        	count ++;
+	        }
+	}
+	return output;
+}
+
+
+int binaryToDecimal(int sw_result_bin[]){
+	int m = 0;
+	int dec_value = 0;
+	int base = 1;
+	int len = current_sw_size;
+	int output[len];
+	//printf(" %d ",  len);
+	  for (m = 0; m < len; m++) {
+		  output[m] = sw_result_bin[m];
+	    }
+
+	for (m = 0; m < len; m++) {
+	        if(output[m] == 1){
+	            dec_value += base;
+	        }
+	        base = base * 2;
+}
+	return dec_value;
+}
+
+void switchPollingTask(void *p){
+	int k,l;
+	while(1){
+	if(loadManage == false){
+	sw_result=IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE); //read slide switches
+	for(k=0; sw_result>0; k++){
+		sw_result_bin[k] = sw_result%2;
+		sw_result = sw_result /2;
+	}
+	current_sw_size =k;
+	//printf("real time ROC:");
+    for(l = k - 1; l >= 0; l--)  {
+        //printf(" %d ", sw_result_bin[l]);
+    }
+	}
+    vTaskDelay(150);
+	}
 }
 
 
@@ -309,7 +421,7 @@ void freq_relay(){
 
 
 	xQueueSendToBackFromISR( Q_freq_data, &temp, pdFALSE );
-	//xTaskNotifyFromISR(stableTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
+	xTaskNotifyFromISR(stableTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
 	return;
 }
 
@@ -333,8 +445,11 @@ int main()
 
 	xTaskCreate( PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw );
 	//xTaskCreate(print_status_task, "print_status_task", configMINIMAL_STACK_SIZE, NULL, PRINT_STATUS_TASK_PRIORITY, NULL);
-	xTaskCreate(keyboard_control_task, "keyboardTsk", configMINIMAL_STACK_SIZE, NULL, PRINT_STATUS_TASK_PRIORITY, &keyboardTaskHandle);
-	//xTaskCreate(stabilityMonitorTask, "stableMonitorTsk", configMINIMAL_STACK_SIZE, NULL, STABLE_MONITOR_TASK_P, stableTaskHandle);
+	xTaskCreate(keyboard_control_task, "keyboardTsk", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_TASK_PRIORITY, &keyboardTaskHandle);
+	xTaskCreate(stabilityMonitorTask, "stableMonitorTsk", configMINIMAL_STACK_SIZE, NULL, STABLE_MONITOR_TASK_P, &stableTaskHandle);
+	xTaskCreate(loadCtlTask, "loadCtlTask", configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_TASK_P, &loadCtlTaskHandle);
+	xTaskCreate(switchPollingTask, "switchPollingTask", configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_TASK_P, &switchPollingTaskHandle);
+
 
 	vTaskStartScheduler();
 
