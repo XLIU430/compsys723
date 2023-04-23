@@ -46,8 +46,6 @@
 #define SWITCH_POLLING_TASK_P (tskIDLE_PRIORITY+3)
 
 
-
-
 TaskHandle_t PRVGADraw;
 TaskHandle_t keyboardTaskHandle;
 TaskHandle_t stableTaskHandle;
@@ -55,8 +53,6 @@ TaskHandle_t loadCtlTaskHandle;
 TaskHandle_t switchPollingTaskHandle;
 BaseType_t checkIfFieldRequired;
 static QueueHandle_t Q_freq_data;
-
-
 
 
 double temp = 50.00;
