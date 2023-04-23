@@ -12816,8 +12816,6 @@ void stabilityMonitorTask(void *p){
     6620:	000844c0 	call	844c <printf>
 
 			}
-
-
 		}
     6624:	003eea06 	br	61d0 <stabilityMonitorTask+0x20>
 
