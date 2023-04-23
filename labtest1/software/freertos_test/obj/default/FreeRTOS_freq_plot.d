@@ -25,7 +25,8 @@ obj/default/FreeRTOS_freq_plot.o: FreeRTOS_freq_plot.c \
   FreeRTOS/projdefs.h FreeRTOS/portable.h \
   FreeRTOS/deprecated_definitions.h FreeRTOS/portmacro.h \
   ../freertos_test_bsp//HAL/inc/sys/alt_irq.h FreeRTOS/mpu_wrappers.h \
-  FreeRTOS/task.h FreeRTOS/list.h FreeRTOS/queue.h
+  FreeRTOS/task.h FreeRTOS/list.h FreeRTOS/timers.h FreeRTOS/task.h \
+  FreeRTOS/queue.h
 
 ../freertos_test_bsp//HAL/inc/sys/alt_irq.h:
 
@@ -98,5 +99,9 @@ FreeRTOS/mpu_wrappers.h:
 FreeRTOS/task.h:
 
 FreeRTOS/list.h:
+
+FreeRTOS/timers.h:
+
+FreeRTOS/task.h:
 
 FreeRTOS/queue.h:

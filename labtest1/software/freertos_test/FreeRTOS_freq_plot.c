@@ -3,18 +3,27 @@
 #include "sys/alt_irq.h"
 #include "system.h"
 #include "io.h"
+#include <math.h>
+#include <stddef.h>
+#include <stdbool.h>
+#include <inttypes.h>
+
 #include "altera_up_avalon_video_character_buffer_with_dma.h"
 #include "altera_up_avalon_video_pixel_buffer_dma.h"
 
 #include "altera_up_avalon_ps2.h"
 #include "altera_up_ps2_keyboard.h"
 
-
 #include "altera_avalon_pio_regs.h"
-#include <stdbool.h>
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
+#include "FreeRTOS/timers.h"
 #include "FreeRTOS/queue.h"
+
+
+
+
+
 
 //For frequency plot
 #define FREQPLT_ORI_X 101		//x axis pixel position at the plot origin
@@ -36,10 +45,8 @@
 #define LOAD_CONTROL_TASK_P (tskIDLE_PRIORITY+6)
 #define SWITCH_POLLING_TASK_P (tskIDLE_PRIORITY+3)
 
-#include <inttypes.h>
 
-int* shedLoads(int numOfShed,int sw_result_bin[]);
-int binaryToDecimal(int sw_result_bin[]);
+
 
 TaskHandle_t PRVGADraw;
 TaskHandle_t keyboardTaskHandle;
@@ -60,7 +67,7 @@ char freqStr[10] ="50.00";
 char testStr[30];
 char oddStr[10];
 char ROCStr[10]= "2";
-
+int push_button = 0;
 int sw_result;
 int sw_result_bin[18];
 int current_sw_size;
@@ -70,10 +77,21 @@ uint8_t keyboardMode = 0;
 unsigned char byte;
 unsigned char previousbyte;
 
+double timer1Count = 0.0;
 int numOfShed = 0;
 bool loadManage =false;
+TimerHandle_t timer;
+TimerHandle_t timer1;
+TimerHandle_t Timer_Reset;
+
+bool mantainMode = false;
+bool unstableRemain = false;
 
 
+
+int* shedLoads(int numOfShed,int sw_result_bin[]);
+int binaryToDecimal(int sw_result_bin[]);
+void vTimerCallback(xTimerHandle t_timer);
 
 //this array map the ps2 scan code of the keypad numbers,{0,1,2,3,4.....}
 const int numbers[] ={112,105,114,122,107,115,116,108,117,125,113};
@@ -86,7 +104,7 @@ typedef struct{
 	unsigned int y2;
 }Line;
 
-
+int timerCount = 0;
 
 
 /****** VGA display ******/
@@ -150,6 +168,18 @@ void PRVGADraw_Task(void *pvParameters ){
 			sprintf(ROCStr, "%f", ROCThresh);
 			alt_up_char_buffer_string(char_buf, ROCStr, 30, 50);
 			alt_up_char_buffer_string(char_buf, freqStr, 30, 46);
+			if(mantainMode == true){
+
+				alt_up_char_buffer_string(char_buf, "Under Maintain Mode", 30, 55);
+
+			}
+			if(mantainMode == false){
+
+				alt_up_char_buffer_string(char_buf, "Under Normal Mode", 30, 55);
+
+			}
+
+
 			//calculate frequency RoC
 
 			if(i==0){
@@ -228,8 +258,8 @@ void keyboard_control_task(void *pvParameters)
 	while (1)
 	{	notiValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		//printf("Scan code: %x\n", byte);
-
-
+	// press 'R' in the keyboard will enter change roc mode, click numbers on the keypad
+	//and click 'ENTER' will save the change
 
 	if((byte == 45)&&(keyboardMode ==0)){
 		memset(testStr, 0, 30);
@@ -266,12 +296,8 @@ void keyboard_control_task(void *pvParameters)
 					}
 				}
 
-	}
-
-
-
-
-
+	}	// press 'F' will enter change frequency mode , click numbers on the keypad
+		//and click 'ENTER' will save the change
 		if((byte == 43)&&(keyboardMode ==0)){
 			memset(testStr, 0, 30);
 			j =0;
@@ -318,19 +344,55 @@ void stabilityMonitorTask(void *p){
 
 			currentROC = (temp-previousFreq) * 2.0 *temp* previousFreq / (temp+previousFreq);
 			currentROC = fabs(currentROC);
-			printf("real time frequency: %lf\n", temp);
-			printf("real time ROC: %lf\n", currentROC);
+			//printf("real time frequency: %lf\n", temp);
+			//printf("real time ROC: %lf\n", currentROC);
 			previousFreq = temp;
 
-			if((loadManage ==false )&&((temp <= freqThresh )||(currentROC >= ROCThresh))){
+			push_button = IORD_ALTERA_AVALON_PIO_DATA(PUSH_BUTTON_BASE);
+			IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, push_button);
+			//printf("push_button_value : %d\n",push_button);
+			if((push_button == 3)&&(mantainMode ==false)){
+
+				mantainMode = true;
+
+			}if((push_button == 7)&&(mantainMode ==true)){
+				mantainMode = false;
+			}
+
+
+
+			if((loadManage ==false )&&(mantainMode == false)&&((temp <= freqThresh )||(currentROC >= ROCThresh))){
 				loadManage = true;
+				unstableRemain = false;
 				numOfShed = numOfShed+1;
+				timerCount = 0;
+				xTimerReset(timer, 10 );
+				printf("unstable detected, %d load sheded \n",numOfShed);
 			}
 			if((loadManage ==true )&&((temp >= freqThresh )&&(currentROC <= ROCThresh))){
 				loadManage = false;
+				unstableRemain = false;
 				numOfShed = 0;
+				timerCount = 0;
+				printf("back to normal\n");
 			}
 
+			if((loadManage ==true )&&(mantainMode == true)){
+				loadManage = false;
+				unstableRemain = false;
+				numOfShed = 0;
+				timerCount = 0;
+				printf("back to normal\n");
+
+			}
+
+			if ((loadManage == true) &&(unstableRemain == true)&&(mantainMode == false)){
+				numOfShed = numOfShed+1;
+				unstableRemain = false;
+				xTimerReset(timer, 10 );
+				printf("unstable remained, %d load sheded \n",numOfShed);
+
+			}
 		}
 }
 
@@ -338,6 +400,7 @@ void stabilityMonitorTask(void *p){
 void loadCtlTask(void *p){
 
 	int load_output;
+
 	while(1){
 		if(loadManage ==true){
 			int* output = shedLoads(numOfShed,sw_result_bin);
@@ -347,6 +410,7 @@ void loadCtlTask(void *p){
 		load_output = binaryToDecimal(sw_result_bin);
 		//printf(" %d ",  load_output);
 		}
+		//IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, buttonValue);
 	    IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, load_output);    //light red LEDs according to switch positions
 	    vTaskDelay(50);
 	}
@@ -356,21 +420,21 @@ void loadCtlTask(void *p){
 int* shedLoads(int numOfShed,int sw_result_bin[]){
 
 	int len = current_sw_size;
-	int output[len];
+	int loadAfterShed[len];
 	int m = 0;
 	int count = 0;
 
 	for (m = 0; m < len; m++) {
-		 output[m] = sw_result_bin[m];
+		loadAfterShed[m] = sw_result_bin[m];
 	}
 
 	for (m = 0; m< len ; m++) {
-	        if((output[m] == 1)&&(count < numOfShed)){
-	        	output[m] = 0;
+	        if((loadAfterShed[m] == 1)&&(count < numOfShed)){
+	        	loadAfterShed[m] = 0;
 	        	count ++;
 	        }
 	}
-	return output;
+	return loadAfterShed;
 }
 
 
@@ -433,6 +497,23 @@ void ps2_isr(void* ps2_device, alt_u32 id){
 	xTaskNotifyFromISR(keyboardTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
 }
 
+void vTimerCallback(xTimerHandle t_timer){
+	if((loadManage == true) &&(unstableRemain == false)){
+		//printf("it reset\n");
+		unstableRemain = true;
+	}
+	//timerCount++;
+	//printf("current time is : %d\n",timerCount*5);
+	//printf("unstable remained\n");
+}
+
+
+void push_button_irq(){
+	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE));
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7); //write 1 to clear all detected falling edges
+	return;
+}
+
 int main()
 {
 	Q_freq_data = xQueueCreate(100,sizeof(double));
@@ -442,6 +523,22 @@ int main()
 
 	alt_up_ps2_enable_read_interrupt(ps2_device);
 	alt_irq_register(PS2_IRQ, ps2_device, ps2_isr);
+
+	timer = xTimerCreate("Timer Name", 500, pdTRUE, NULL, vTimerCallback);
+	if (xTimerStart(timer, 0) != pdPASS){
+			printf("Cannot start timer");
+
+	}
+
+	IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x7); //enable interrupt for all three push buttons (Keys 1-3 -> bits 0-2)
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7); //write 1 to edge capture to clear pending interrupts
+	alt_irq_register(PUSH_BUTTON_IRQ, 0, push_button_irq);  //register ISR for push button interrupt request
+
+
+
+
+
+
 
 	xTaskCreate( PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw );
 	//xTaskCreate(print_status_task, "print_status_task", configMINIMAL_STACK_SIZE, NULL, PRINT_STATUS_TASK_PRIORITY, NULL);
