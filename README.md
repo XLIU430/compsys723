@@ -14,7 +14,7 @@ Connection Guide:
 
 
 Set up Quatus2:
-Unzip the compsys723-main, you will find 'freq_relay_controller.sof' inside the labtest1 folder.
+Unzip the compsys723-main, you will find 'freq_relay_controller.sof' inside the '723_a1' folder.
 Open quatus2 , Tools-> Programmer. Click on hardware setup and choose 'USB-Blaster'. 
 If you cannot find USB blaster, that might be driver issue: windows need to update the driver
 to make the USB Blaster work, please follow this website to update the driver:
@@ -22,7 +22,8 @@ https://www.terasic.com.tw/wiki/Altera_USB_Blaster_Driver_Installation_Instructi
 Click on 'Add File' and select 'freq_relay_controller.sof' under the labtest1 folder. Make sure the program/configure tick box is on, and all other tick boxes are off. Then click on 'start'. If the progress failed, you need to click 'Start' once more until it shows successful, or power off and power on the DE2 board.
 
 Set up Nios2:
-Open Nios II Software Build Tools (Eclipse), it will require you to specific the work space, please choose the 'labtest1' folder as the workspace. It will load the project. All you need to do is build 'freerots_test' the project. Then click on 'Run' button.
+Open Nios II Software Build Tools (Eclipse), it will require you to specific the workspace, please choose the '723_a1' folder as the workspace. The workspace is empty initially, you need to import the project and the bsp manually, in the menu bar of Nios2. File-> import-> Nios2 software build tools project -> import custom makefile for Nios2 software build tools project. In the project location section, select the 'freertos_a1' folder under '723_a1/software' copy the folder name and click on ok.
+In the project name section, please paste the folder name. Then click on ok. Do the same process for 'freertos_a1_bsp' project. Make sure you have both freertos_a1 and freertos_a1_bsp in the workspace. Build project for freertos_a1_bsp first. Then build freertos_a1. To run the code, go Run -> Run configurations.  Create new Nios2 hardware configuration, select the freertos_a1 as project name. If the project elf file name didn't come up automatically, you need to select it manually, it's under freertos_a1 folder. Click on apply and run will start executing the code.
 
 
 Constants:
