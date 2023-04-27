@@ -21,7 +21,11 @@
 #include "FreeRTOS/queue.h"
 
 
-
+#include "FreeRTOS/semphr.h"
+SemaphoreHandle_t maintainMode_sem;
+SemaphoreHandle_t freqROC_sem;
+SemaphoreHandle_t button_sem;
+SemaphoreHandle_t shed_sem;
 
 
 
@@ -37,13 +41,14 @@
 #define ROCPLT_ROC_RES 0.5		//number of pixels per Hz/s (y axis scale)
 
 #define MIN_FREQ 45.0 //minimum frequency to draw
-
 #define PRVGADraw_Task_P      (tskIDLE_PRIORITY+1)
 //#define PRINT_STATUS_TASK_PRIORITY (tskIDLE_PRIORITY+2)
-#define KEYBOARD_TASK_PRIORITY (tskIDLE_PRIORITY+2)
+#define KEYBOARD_TASK_PRIORITY (tskIDLE_PRIORITY+3)	// changed to 3
 #define STABLE_MONITOR_TASK_P (tskIDLE_PRIORITY+5)
 #define LOAD_CONTROL_TASK_P (tskIDLE_PRIORITY+6)
-#define SWITCH_POLLING_TASK_P (tskIDLE_PRIORITY+3)
+#define LOAD_FREQ_TASK_P (tskIDLE_PRIORITY+7)
+#define SWITCH_POLLING_TASK_P (tskIDLE_PRIORITY+2)// changed to 2
+//#define BUTTON_CONTROL_TASK_P (tskIDLE_PRIORITY+3)
 
 
 TaskHandle_t PRVGADraw;
@@ -51,6 +56,10 @@ TaskHandle_t keyboardTaskHandle;
 TaskHandle_t stableTaskHandle;
 TaskHandle_t loadCtlTaskHandle;
 TaskHandle_t switchPollingTaskHandle;
+TaskHandle_t buttonControlTaskHandle;
+
+TaskHandle_t frequencyMonitorTaskHandle;
+
 BaseType_t checkIfFieldRequired;
 static QueueHandle_t Q_freq_data;
 
@@ -84,18 +93,32 @@ bool mantainMode = false;
 bool unstableRemain = false;
 
 // variables to store measurements
-int first_shed_load = 0;
-int recent_five_sheds[5] = {0};
+int first_shed_time = 0;
+int shed_time = 0;
+int recent_five_sheds[5];
 int min_time = 0;
 int max_time = 0;
 int avg_time = 0;
 int total_time = 0;
 
+char Recent_5_Str[10];
+char minTimeStr[10];
+char maxTimeStr[10];
+char avgTimeStr[10];
+char totalTimeStr[10];
+double Recent = 0.0;
+//			double minTime = 0.0;
+//			double maxTime = 0.0;
+//			double avgTime = 0.0;
+//			double totalTime = 0.0;
+
+int shed_count = 0;
 
 
 int* shedLoads(int numOfShed,int sw_result_bin[]);
 int binaryToDecimal(int sw_result_bin[]);
 void vTimerCallback(xTimerHandle t_timer);
+int check_output(int input);
 
 //this array map the ps2 scan code of the keypad numbers,{0,1,2,3,4.....}
 const int numbers[] ={112,105,114,122,107,115,116,108,117,125,113};
@@ -111,7 +134,58 @@ typedef struct{
 int timerCount = 0;
 
 
-/****** VGA display ******/
+void update_shed(){
+	xSemaphoreTake(shed_sem, portMAX_DELAY);
+	int i = 0;
+	shed_time = 0;
+	max_time = 0;
+	min_time = 0;
+	int sum = 0;
+	int counter2 = 0;
+
+
+	if (mantainMode == false) {
+		shed_count++;
+		counter2++;
+		shed_time = xTaskGetTickCount() - first_shed_time;
+		min_time = shed_time;
+
+	// initial fill
+	if (i < 5){
+			recent_five_sheds[i] = shed_time;
+			i++;
+	}
+
+	// find min and max shed times
+	for (i = 0; i < 5; i++) {
+		if ((recent_five_sheds[i] < min_time) && (recent_five_sheds[i] != 0)) {
+			min_time = recent_five_sheds[i];
+		}
+		if (recent_five_sheds[i] > max_time) {
+			max_time = recent_five_sheds[i];
+		}
+	}
+
+
+	// find the avg time
+	avg_time = (min_time + max_time)/2;	// running average
+	total_time = shed_count;
+//	i = 0;
+
+
+	} else {
+		min_time = 0;
+		max_time = 0;
+		shed_time = 0;
+		avg_time = 0;
+	}
+	printf(" %d \n",  min_time);
+	printf(" %d \n",  max_time);
+	printf(" %d \n",  shed_time);
+	printf(" %d \n",  avg_time);
+	xSemaphoreGive(shed_sem);
+}
+
 
 void PRVGADraw_Task(void *pvParameters ){
 
@@ -152,34 +226,77 @@ void PRVGADraw_Task(void *pvParameters ){
 	alt_up_char_buffer_string(char_buf, "-30", 9, 34);
 	alt_up_char_buffer_string(char_buf, "-60", 9, 36);
 
-	alt_up_char_buffer_string(char_buf, "Frequency threshold:", 4, 46);
+	alt_up_char_buffer_string(char_buf, "Frequency threshold (Hz):", 1, 40);
+	alt_up_char_buffer_string(char_buf, "RoC threshold (Hz/s):", 1, 42);
+	alt_up_char_buffer_string(char_buf, "Recent 5 readings (ms):", 1, 44);
+	alt_up_char_buffer_string(char_buf, "Minimum Time (ms):", 1, 46);
+	alt_up_char_buffer_string(char_buf, "Maximum Time (ms):", 1, 48);
+	alt_up_char_buffer_string(char_buf, "Average Time (ms):", 1, 50);
+	alt_up_char_buffer_string(char_buf, "Total System Up Time (s):", 1, 52);
 
-
-	alt_up_char_buffer_string(char_buf, "RoC threshold:", 4, 50);
 
 
 
 	int i = 99, j = 0;
 	Line line_freq, line_roc;
+	int total_time2 = 0;
 
 	while(1){
+		xSemaphoreTake(shed_sem, portMAX_DELAY);
+		unsigned int total_time2 = xTaskGetTickCount()/1000;
+		sprintf(freqStr, "%f", freqThresh);
+		sprintf(ROCStr, "%f", ROCThresh);
+		sprintf(Recent_5_Str, "%d     %d     %d     %d     %d          ", recent_five_sheds[0], recent_five_sheds[1], recent_five_sheds[2], recent_five_sheds[3], recent_five_sheds[4]);
+		sprintf(minTimeStr, "%d", min_time);
+		sprintf(maxTimeStr, "%d", max_time);
+		sprintf(avgTimeStr, "%d", avg_time);
+		sprintf(totalTimeStr, "%d seconds", total_time2);
+
+
+		alt_up_char_buffer_string(char_buf, freqStr, 30, 40);
+		alt_up_char_buffer_string(char_buf, ROCStr, 30, 42);
+		alt_up_char_buffer_string(char_buf, Recent_5_Str, 30, 44);
+		alt_up_char_buffer_string(char_buf, minTimeStr, 30, 46);
+		alt_up_char_buffer_string(char_buf, maxTimeStr, 30, 48);
+		alt_up_char_buffer_string(char_buf, avgTimeStr, 30, 50);
+		alt_up_char_buffer_string(char_buf, totalTimeStr, 30, 52);
+		xSemaphoreGive(shed_sem);
 
 		//receive frequency data from queue
+		xSemaphoreTake(freqROC_sem, portMAX_DELAY);
 		while(uxQueueMessagesWaiting( Q_freq_data ) != 0){
 			xQueueReceive( Q_freq_data, freq+i, 0 );
 
-			sprintf(freqStr, "%f", freqThresh);
-			sprintf(ROCStr, "%f", ROCThresh);
-			alt_up_char_buffer_string(char_buf, ROCStr, 30, 50);
-			alt_up_char_buffer_string(char_buf, freqStr, 30, 46);
+
 			if(mantainMode == true){
 
-				alt_up_char_buffer_string(char_buf, "Under Maintain Mode", 30, 55);
+				alt_up_char_buffer_string(char_buf, "Under Maintenance Mode", 20, 55);
+//				xSemaphoreTake(shed_sem, portMAX_DELAY);
+//				first_shed_time = 0;
+//				shed_time = 0;
+//				memset(recent_five_sheds, 0, sizeof(recent_five_sheds));
+//				min_time = 0;
+//				max_time = 0;
+//				avg_time = 0;
+//				total_time = 0;
+//				sprintf(freqStr, "%f", freqThresh);
+//				sprintf(ROCStr, "%f", ROCThresh);
+//				sprintf(Recent_5_Str, "%d", Recent);
+//				sprintf(minTimeStr, "%d", min_time);
+//				sprintf(maxTimeStr, "%d", max_time);
+//				sprintf(avgTimeStr, "%d", avg_time);
+//				sprintf(totalTimeStr, "%d", Recent);
+				alt_up_char_buffer_string(char_buf, "0     0     0     0     0          ", 30, 44);
+				alt_up_char_buffer_string(char_buf, "0         ", 30, 46);
+				alt_up_char_buffer_string(char_buf, "0         ", 30, 48);
+				alt_up_char_buffer_string(char_buf, "0         ", 30, 50);
+				alt_up_char_buffer_string(char_buf, "0         ", 30, 52);
+//				xSemaphoreGive(shed_sem);
 
 			}
 			if(mantainMode == false){
 
-				alt_up_char_buffer_string(char_buf, "Under Normal Mode", 30, 55);
+				alt_up_char_buffer_string(char_buf, "Under Normal Mode              ", 20, 55);
 
 			}
 
@@ -228,6 +345,7 @@ void PRVGADraw_Task(void *pvParameters ){
 				alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_roc.x1, line_roc.y1, line_roc.x2, line_roc.y2, 0x3ff << 0, 0);
 			}
 		}
+		xSemaphoreGive(freqROC_sem);
 		vTaskDelay(10);
 
 	}
@@ -341,11 +459,30 @@ void keyboard_control_task(void *pvParameters)
 	}
 }
 
+
+void freq_relay(){
+	#define SAMPLING_FREQ 16000.0
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	temp = SAMPLING_FREQ/(double)IORD(FREQUENCY_ANALYSER_BASE, 0);
+
+	TickType_t start_time = xTaskGetTickCountFromISR();		// used for time measure
+	xQueueSendToBackFromISR(Q_freq_data, &temp, pdFALSE );
+//	xQueueSendToBackFromISR(Q_freq_data, &temp, pdFALSE );
+	xTaskNotifyFromISR(stableTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
+//	xTaskNotifyFromISR(frequencyMonitorTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
+	return;
+}
+
+
+
 void stabilityMonitorTask(void *p){
 	int notiValue;
 	int counter = 0;
 	while (1)
+
 		{	notiValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//			xQueueReceive(Q_freq_data, &temp, portMAX_DELAY);
+			xSemaphoreTake(freqROC_sem, portMAX_DELAY);
 
 			currentROC = (temp-previousFreq) * 2.0 *temp* previousFreq / (temp+previousFreq);
 			currentROC = fabs(currentROC);
@@ -367,27 +504,16 @@ void stabilityMonitorTask(void *p){
 //				printf("%d ", recent_five_sheds[loop]);
 //			}
 
-			push_button = IORD_ALTERA_AVALON_PIO_DATA(PUSH_BUTTON_BASE);
-//			IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, push_button);
-			//printf("push_button_value : %d\n",push_button);
-			if((push_button == 3)&&(mantainMode ==false)){
-
-				mantainMode = true;
-				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, 0x00);	// turn off all green LEDs
-
-			}if((push_button == 7)&&(mantainMode ==true)){
-				mantainMode = false;
-			}
-
-
-
 			if((loadManage ==false )&&(mantainMode == false)&&((temp <= freqThresh )||(currentROC >= ROCThresh))){
 				loadManage = true;
 				unstableRemain = false;
 				numOfShed = numOfShed+1;
 				timerCount = 0;
 				xTimerReset(timer, 10 );
-				printf("unstable detected, %d load sheded \n",numOfShed);
+				xSemaphoreTake(shed_sem, portMAX_DELAY);
+				first_shed_time = xTaskGetTickCountFromISR();
+				xSemaphoreGive(shed_sem);
+				printf("unstable detected, %d load shed \n",numOfShed);
 			}
 			if((loadManage ==true )&&((temp >= freqThresh )&&(currentROC <= ROCThresh))){
 				loadManage = false;
@@ -410,18 +536,17 @@ void stabilityMonitorTask(void *p){
 				numOfShed = numOfShed+1;
 				unstableRemain = false;
 				xTimerReset(timer, 10 );
-				printf("unstable remained, %d load sheded \n",numOfShed);
+				printf("remains unstable, %d load shed \n",numOfShed);
 
 			}
+			xSemaphoreGive(freqROC_sem);
 		}
 }
 
 
-void loadCtlTask(void *p){
+void loadCtlTask(void *pvParameters){
 
 	int load_output;
-	int fill_flag = 0;
-	int counter = 0;
 	int out = 0;
 
 	while(1){
@@ -429,25 +554,28 @@ void loadCtlTask(void *p){
 			int* output = shedLoads(numOfShed,sw_result_bin);
 			out = output;
 			load_output = binaryToDecimal(out);
+			if (mantainMode == false) {
+				update_shed();	// calculate shed time measurements
+			}
+
 		}else{
 			load_output = binaryToDecimal(sw_result_bin);
+			//update_shed();
 			//printf(" %d ",  load_output);
 		}
 
-//		update_stats();
+//		if (mantainMode == false) {
+//			update_shed();	// calculate shed time measurements
+//		}
 
 
 		//IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, buttonValue);
 	    IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, load_output);    //light red LEDs according to switch positions
 	    IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, check_output(load_output));
 	    vTaskDelay(50);
-	    printf("\n%d\n", out);
 	}
 
 }
-
-
-//int update_stats():
 
 
 
@@ -556,16 +684,6 @@ void switchPollingTask(void *p){
 }
 
 
-void freq_relay(){
-	#define SAMPLING_FREQ 16000.0
-	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	temp = SAMPLING_FREQ/(double)IORD(FREQUENCY_ANALYSER_BASE, 0);
-
-
-	xQueueSendToBackFromISR( Q_freq_data, &temp, pdFALSE );
-	xTaskNotifyFromISR(stableTaskHandle, 1, eSetValueWithOverwrite, &xHigherPriorityTaskWoken);
-	return;
-}
 
 void ps2_isr(void* ps2_device, alt_u32 id){
 
@@ -586,14 +704,47 @@ void vTimerCallback(xTimerHandle t_timer){
 }
 
 
-void push_button_irq(){
-	IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE));
+void push_button_irq(void* context, alt_u32 id){
+
+	if (IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE) == 4) {
+		if (mantainMode != true) {
+			mantainMode = true; // save previous state
+			printf("\n maintenance mode on\n");
+//			recent_five_sheds[] = [0, 0, 0, 0, 0];
+//			min_time = 0;
+//			max_time = 0;
+//			avg_time = 0;
+//			total_time = 0;
+
+		}
+		else {
+			mantainMode = false;
+			printf("\n maintenance mode off \n");
+		}
+	}
+
 	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x7); //write 1 to clear all detected falling edges
 	return;
+
 }
+
+
 
 int main()
 {
+
+	// create semaphores
+	maintainMode_sem = xSemaphoreCreateMutex();
+	xSemaphoreGive(maintainMode_sem);
+	freqROC_sem = xSemaphoreCreateMutex();
+	xSemaphoreGive(freqROC_sem);
+
+	button_sem = xSemaphoreCreateMutex();
+	xSemaphoreGive(button_sem);
+
+	shed_sem = xSemaphoreCreateMutex();
+	xSemaphoreGive(shed_sem);
+
 	Q_freq_data = xQueueCreate(100,sizeof(double));
 	alt_up_ps2_dev * ps2_device = alt_up_ps2_open_dev(PS2_NAME);
 
@@ -616,9 +767,12 @@ int main()
 	//xTaskCreate(print_status_task, "print_status_task", configMINIMAL_STACK_SIZE, NULL, PRINT_STATUS_TASK_PRIORITY, NULL);
 	xTaskCreate(keyboard_control_task, "keyboardTsk", configMINIMAL_STACK_SIZE, NULL, KEYBOARD_TASK_PRIORITY, &keyboardTaskHandle);
 	xTaskCreate(stabilityMonitorTask, "stableMonitorTsk", configMINIMAL_STACK_SIZE, NULL, STABLE_MONITOR_TASK_P, &stableTaskHandle);
+
+//	xTaskCreate(frequencyMonitorTask, "frequencyMonitorTask", configMINIMAL_STACK_SIZE, NULL, LOAD_FREQ_TASK_P, &frequencyMonitorTaskHandle);
+
 	xTaskCreate(loadCtlTask, "loadCtlTask", configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_TASK_P, &loadCtlTaskHandle);
 	xTaskCreate(switchPollingTask, "switchPollingTask", configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_TASK_P, &switchPollingTaskHandle);
-
+//	xTaskCreate(buttonControlTask, "buttonControlTask", configMINIMAL_STACK_SIZE, NULL, BUTTON_CONTROL_TASK_P, &buttonControlTaskHandle);
 
 	vTaskStartScheduler();
 
